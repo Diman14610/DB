@@ -23,7 +23,6 @@ namespace DataBase
 
         private void Form7_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Привет мир");
             try/*Блок, который загружется все имена таблиц в текстовое поле*/
             {
                 var col = new AutoCompleteStringCollection();

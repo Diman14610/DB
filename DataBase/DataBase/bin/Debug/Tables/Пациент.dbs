@@ -1,0 +1,3 @@
+CREATE TABLE Пациент (
+id_пациеента INT PRIMARY KEY IDENTITY(1,1)
+)

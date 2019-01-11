@@ -1,0 +1,5 @@
+CREATE TABLE Товар (
+id_товара INT PRIMARY KEY IDENTITY(1,1),
+наименование NVARCHAR(150) NULL,
+цена MONEY NULL
+)

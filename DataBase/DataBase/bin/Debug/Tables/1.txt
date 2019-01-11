@@ -1,0 +1,11 @@
+CREATE TABLE Товар (
+id_товара INT PRIMARY KEY IDENTITY(1,1),
+наименование NVARCHAR(150) NULL,
+цена MONEY NULL
+)
+CREATE TABLE Торговец (
+id_торговца INT PRIMARY KEY IDENTITY(1,1),
+цена MONEY NULL
+)
+ALTER TABLE Торговец
+ADD CONSTRAINT PK_Товар_id_товара_FK_Торговец_цена FOREIGN KEY (цена) REFERENCES Товар (id_товара)

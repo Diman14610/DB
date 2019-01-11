@@ -1,0 +1,4 @@
+CREATE TABLE Поставщик (
+id_поставщика int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+Наименование_поставщика nvarchar(150) NULL
+)

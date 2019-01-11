@@ -1,0 +1,4 @@
+CREATE TABLE Сотрудники (
+сотрудника INT PRIMARY KEY IDENTITY(1,1),
+  PRIMARY KEY IDENTITY(1,1)
+)

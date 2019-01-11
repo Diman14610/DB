@@ -1,0 +1,4 @@
+CREATE TABLE Торговец (
+id_торговца INT PRIMARY KEY IDENTITY(1,1),
+цена MONEY NULL
+)

@@ -1,0 +1,21 @@
+CREATE TABLE Товар (
+id_товара INT PRIMARY KEY IDENTITY(1,1),
+наименование NVARCHAR(150) NULL,
+цена MONEY NULL
+)
+CREATE TABLE Торговец (
+id_торговца INT PRIMARY KEY IDENTITY(1,1),
+цена MONEY NULL
+)
+CREATE TABLE Поставщик (
+id_поставщика int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+Наименование_поставщика nvarchar(150) NULL
+)
+CREATE TABLE Сотрудники (
+сотрудника INT PRIMARY KEY IDENTITY(1,1),
+  PRIMARY KEY IDENTITY(1,1)
+)
+ALTER TABLE Торговец
+ADD CONSTRAINT PK_Товар_id_товара_FK_Торговец_id_торговца FOREIGN KEY (id_торговца) REFERENCES Товар (id_товара)
+ALTER TABLE Сотрудники
+ADD CONSTRAINT PK_Поставщик_id_поставщика_FK_Сотрудники_сотрудника FOREIGN KEY (сотрудника) REFERENCES Поставщик (id_поставщика)

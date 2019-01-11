@@ -1,0 +1,4 @@
+CREATE TABLE Запись (
+id_записи int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+наименование_записи nvarchar(50) PRIMARY KEY IDENTITY(1,1) NOT NULL
+)

@@ -1,0 +1,74 @@
+﻿<Window x:Class="Stat_talon.Add_Doctor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        mc:Ignorable="d"
+         Title="Врачи" Height="768" Loaded="Window_Loaded" Width="1024" WindowStartupLocation="CenterScreen" FontFamily="Times New Roman" FontSize="24" Background="#FF011A3E" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid Name="grid1">
+        <Grid Name="grid_add_doctor" HorizontalAlignment="Left" Height="739" VerticalAlignment="Top" Width="1018">
+            <TextBox  x:Name="textbox_fname" GotFocus="textbox_fname_GotFocus" HorizontalAlignment="Left" Height="37" Margin="31,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_fname_TextChanged" TabIndex="1"/>
+            <ComboBox x:Name="combobox_spec" HorizontalAlignment="Left" Margin="31,382,0,0" VerticalAlignment="Top" Width="473" IsEditable="True" SelectionChanged="combobox_spec_SelectionChanged" TabIndex="10"/>
+            <ComboBox x:Name="combobox_profile" HorizontalAlignment="Left" Margin="520,382,0,0" VerticalAlignment="Top" Width="466" IsEditable="True" TabIndex="11"/>
+            <ComboBox x:Name="combobox_autori" HorizontalAlignment="Left" Margin="31,480,0,0" VerticalAlignment="Top" Width="955" Height="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabIndex="12"/>
+            <Button Content="Добавить" HorizontalAlignment="Left" Margin="370,627,0,0" VerticalAlignment="Top" Width="134" Height="46" Background="{x:Null}" Foreground="#FFFFF5F5" BorderBrush="White" Click="Button_Click" TabIndex="13"/>
+            <Button Content="Вернутся к просмотру" HorizontalAlignment="Left" Margin="555,627,0,0" VerticalAlignment="Top" Width="259" Height="46" Background="{x:Null}" Foreground="#FFFFF5F5" BorderBrush="White" TabIndex="14" Click="Button_Click_1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="149,26,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="500,26,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="796,26,0,0" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,118,0,0" TextWrapping="Wrap" Text="Начало рабочего дня" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,221,0,0" TextWrapping="Wrap" Text="Конец рабочего дня" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="393,118,0,0" TextWrapping="Wrap" Text="Начало перерыва" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="393,221,0,0" TextWrapping="Wrap" Text="Конец перерыва" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="784,118,0,0" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="796,230,0,0" TextWrapping="Wrap" Text="Кабинет" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="199,349,0,0" TextWrapping="Wrap" Text="Специальность" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="733,349,0,0" TextWrapping="Wrap" Text="Профиль" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="460,447,0,0" TextWrapping="Wrap" Text="Учетная запись" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox GotFocus="textbox_name_GotFocus" x:Name="textbox_name" HorizontalAlignment="Left" Height="37" Margin="359,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_name_TextChanged" TabIndex="2"/>
+            <TextBox GotFocus="textbox_lname_GotFocus" x:Name="textbox_lname" HorizontalAlignment="Left" Height="37" Margin="680,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_lname_TextChanged" TabIndex="3"/>
+            <TextBox GotFocus="textbox_phone_GotFocus" x:Name="textbox_phone" MaxLength="11" HorizontalAlignment="Left" Height="37" Margin="709,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" FontSize="24" TextChanged="textbox_phone_TextChanged" TabIndex="8"/>
+            <TextBox GotFocus="textbox_cabinet_GotFocus" MaxLength="6" x:Name="textbox_cabinet" HorizontalAlignment="Left" Height="37" Margin="709,263,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" FontSize="24" TabIndex="9"/>
+            <ComboBox x:Name="combobox_rab_dayB" HorizontalAlignment="Left" Margin="64,151,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="37" TabIndex="4"/>
+            <ComboBox x:Name="combobox__rab_dayE" HorizontalAlignment="Left" Margin="64,254,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="5"/>
+            <ComboBox x:Name="combobox_preB" HorizontalAlignment="Left" Margin="406,152,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="6"/>
+            <ComboBox x:Name="combobox_preE" HorizontalAlignment="Left" Margin="406,254,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="7"/>
+        </Grid>
+        <Grid Name="grid_pre_doctor" HorizontalAlignment="Left" Height="739" VerticalAlignment="Top" Width="1018" d:IsHidden="True">
+            <WindowsFormsHost x:Name="forms1" HorizontalAlignment="Left" Height="410" VerticalAlignment="Top" Width="1018"/>
+            <Button Content="Добавить" HorizontalAlignment="Left" Margin="196,514,0,0" VerticalAlignment="Top" Width="183" Click="Button_Click_2" Background="#FFF1F1F1" BorderBrush="Black" Foreground="Black" Height="46"/>
+            <Button Content="Удалить" HorizontalAlignment="Left" Margin="705,577,0,0" VerticalAlignment="Top" Width="183" Click="Button_Click_3" Background="#FFF1F1F1" BorderBrush="Black" Foreground="Black" Height="46"/>
+            <Button Content="Изменить" HorizontalAlignment="Left" Margin="705,511,0,0" VerticalAlignment="Top" Width="183" Click="Button_Click_4"  Background="#FFF1F1F1" BorderBrush="Black" Foreground="Black" Height="46"/>
+        </Grid>
+        <Grid Name="grid_edit_doctor" HorizontalAlignment="Left" Height="739" VerticalAlignment="Top" Width="1018" d:IsHidden="True">
+            <TextBox GotFocus="textbox_fname_GotFocus" x:Name="textbox_fname_Copy" HorizontalAlignment="Left" Height="37" Margin="31,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_fname_TextChanged" TabIndex="1"/>
+            <ComboBox x:Name="combobox_spec_Copy" HorizontalAlignment="Left" Margin="31,382,0,0" VerticalAlignment="Top" Width="473" IsEditable="True" SelectionChanged="combobox_spec_SelectionChanged" TabIndex="10"/>
+            <ComboBox x:Name="combobox_profile_Copy" HorizontalAlignment="Left" Margin="520,382,0,0" VerticalAlignment="Top" Width="466" IsEditable="True" TabIndex="11"/>
+            <ComboBox x:Name="combobox_autori_Copy" HorizontalAlignment="Left" Margin="31,480,0,0" VerticalAlignment="Top" Width="955" Height="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TabIndex="12" IsEditable="True"/>
+            <Button Content="Изменить" HorizontalAlignment="Left" Margin="370,627,0,0" VerticalAlignment="Top" Width="134" Height="46" Background="{x:Null}" Foreground="#FFFFF5F5" BorderBrush="White" Click="Button_Click_5" TabIndex="13"/>
+            <Button Content="Вернутся к просмотру" HorizontalAlignment="Left" Margin="555,627,0,0" VerticalAlignment="Top" Width="259" Height="46" Background="{x:Null}" Foreground="#FFFFF5F5" BorderBrush="White" TabIndex="14" Click="Button_Click_1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="149,26,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="500,26,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="796,26,0,0" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,118,0,0" TextWrapping="Wrap" Text="Начало рабочего дня" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,221,0,0" TextWrapping="Wrap" Text="Конец рабочего дня" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="393,118,0,0" TextWrapping="Wrap" Text="Начало перерыва" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="393,221,0,0" TextWrapping="Wrap" Text="Конец перерыва" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="784,118,0,0" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="796,230,0,0" TextWrapping="Wrap" Text="Кабинет" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="199,349,0,0" TextWrapping="Wrap" Text="Специальность" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="733,349,0,0" TextWrapping="Wrap" Text="Профиль" VerticalAlignment="Top" Foreground="White"/>
+            <TextBlock HorizontalAlignment="Left" Margin="460,447,0,0" TextWrapping="Wrap" Text="Учетная запись" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox GotFocus="textbox_name_GotFocus" x:Name="textbox_name_Copy" HorizontalAlignment="Left" Height="37" Margin="359,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_name_TextChanged" TabIndex="2"/>
+            <TextBox GotFocus="textbox_lname_GotFocus" x:Name="textbox_lname_Copy" HorizontalAlignment="Left" Height="37" Margin="680,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" FontSize="24" TextChanged="textbox_lname_TextChanged" TabIndex="3"/>
+            <TextBox GotFocus="textbox_phone_GotFocus" x:Name="textbox_phone_Copy" MaxLength="11" HorizontalAlignment="Left" Height="37" Margin="709,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" FontSize="24" TextChanged="textbox_phone_TextChanged" TabIndex="8"/>
+            <TextBox GotFocus="textbox_cabinet_GotFocus" MaxLength="6" x:Name="textbox_cabinet_Copy" HorizontalAlignment="Left" Height="37" Margin="709,263,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" FontSize="24" TabIndex="9"/>
+            <ComboBox x:Name="combobox_rab_dayB_Copy" HorizontalAlignment="Left" Margin="64,151,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="37" TabIndex="4"/>
+            <ComboBox x:Name="combobox__rab_dayE_Copy" HorizontalAlignment="Left" Margin="64,254,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="5"/>
+            <ComboBox x:Name="combobox_preB_Copy" HorizontalAlignment="Left" Margin="406,152,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="6"/>
+            <ComboBox x:Name="combobox_preE_Copy" HorizontalAlignment="Left" Margin="406,254,0,0" VerticalAlignment="Top" Width="136" IsEditable="True" Height="36" TabIndex="7"/>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,7 @@
+V:\Count_char\Count_char\bin\Debug\Count_char.exe.config
+V:\Count_char\Count_char\bin\Debug\Count_char.exe
+V:\Count_char\Count_char\bin\Debug\Count_char.pdb
+V:\Count_char\Count_char\obj\Debug\Count_char.csprojAssemblyReference.cache
+V:\Count_char\Count_char\obj\Debug\Count_char.csproj.CoreCompileInputs.cache
+V:\Count_char\Count_char\obj\Debug\Count_char.exe
+V:\Count_char\Count_char\obj\Debug\Count_char.pdb

@@ -1,0 +1,17 @@
+﻿<Window x:Class="Stat_talon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        mc:Ignorable="d"
+          Title="Авторизация" Loaded="Window_Loaded" Height="392" Width="736" FontSize="24" FontFamily="Times New Roman" WindowStartupLocation="CenterScreen" Background="#FF010A29" ResizeMode="NoResize" KeyUp="Window_KeyUp">
+    <Grid>
+        <ComboBox Text="" Name="login_" Margin="131,71,0,0" VerticalAlignment="Top" IsEditable="True" Height="55" HorizontalAlignment="Left" Width="462" TabIndex="1" FontSize="36"/>
+        <PasswordBox Password="" Name="password_" MaxLength="15" HorizontalAlignment="Left" Margin="131,200,0,0" VerticalAlignment="Top" Width="462" Height="56" TabIndex="2" FontSize="36"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Height="56" Width="111" Foreground="White" FontSize="36"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="311,142,0,0" VerticalAlignment="Top" Height="53" Width="120" Foreground="White" FontSize="36"/>
+        <Button Name="enter_" Content="Войти" TabIndex="3" HorizontalAlignment="Left" Margin="131,279,0,0" VerticalAlignment="Top" Width="152" Height="56" Background="#FF011236" BorderBrush="White" Foreground="White" Click="enter__Click"/>
+        <Button Name="close_" Content="Отменить" TabIndex="4" HorizontalAlignment="Left" Margin="441,279,0,0" VerticalAlignment="Top" Width="152" Height="56" Background="#FF011236" BorderBrush="White" Foreground="White" Click="close__Click"/>
+    </Grid>
+</Window>

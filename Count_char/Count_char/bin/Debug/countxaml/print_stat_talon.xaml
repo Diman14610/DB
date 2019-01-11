@@ -1,0 +1,19 @@
+﻿<Window x:Class="Stat_talon.print_stat_talon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        mc:Ignorable="d"
+             Title="Печать статистического талона" Height="610.902" Width="1077.212" Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen" FontSize="24" FontFamily="Times New Roman" Background="#FF011A3E" ResizeMode="NoResize">
+    <Grid>
+        <DatePicker CalendarStyle="{StaticResource TouchCalendarStyle}"  Name="datepicker_date" HorizontalAlignment="Left" Margin="245,101,0,0" VerticalAlignment="Top" Width="273" DisplayDate="2018-05-14" Text="Datetime.Noew"/>
+        <Button Name="button_print" Content="Печать" HorizontalAlignment="Left" Margin="159,176,0,0" VerticalAlignment="Top" Width="191" Height="59" Background="White" BorderBrush="Black" Click="Button_Click"/>
+        <Button Name="button_close" Content="Закрыть" HorizontalAlignment="Left" Margin="393,176,0,0" VerticalAlignment="Top" Width="191" Height="59" Background="White" BorderBrush="Black" Click="Button_Click_1"/>
+        <Label Name="label__1" Content="Распечатать?" HorizontalAlignment="Left" Margin="256,101,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+        <Button Name="button_yes" Content="Да" HorizontalAlignment="Left" Margin="159,189,0,0" VerticalAlignment="Top" Width="191" Height="59" BorderBrush="White" Background="White" Click="button_yes_Click"/>
+        <Button Name="button_no" Content="Нет" HorizontalAlignment="Left" Margin="393,189,0,0" VerticalAlignment="Top" Width="191" Height="59" BorderBrush="White" Background="White" Click="button_no_Click"/>
+        <WindowsFormsHost HorizontalAlignment="Left" Height="562" Margin="624,10,0,0" VerticalAlignment="Top" Width="437"/>
+
+    </Grid>
+</Window>

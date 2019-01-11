@@ -1,0 +1,15 @@
+﻿<Application x:Class="Stat_talon.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Stat_talon"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/VS2012/VS2012WindowStyle.xaml" />
+                <ResourceDictionary Source="Мои шаблоны/TabControl/Tab_contol_template.xaml"/>
+                <ResourceDictionary Source="Мои шаблоны/Calendar/CalendarTemplate1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="Stat_talon.User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+               Title="Пользователи" Loaded="Window_Loaded" Height="471.659" Width="755.156" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontSize="24" FontFamily="Times New Roman" Background="#FF00204F">
+    <Grid Background="#FF1E0B4F">
+        <WindowsFormsHost x:Name="forms1" HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="614"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="101,321,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click" Background="#FFF1F1F1" BorderBrush="Black" Foreground="Black" Height="34"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="619,95,0,0" VerticalAlignment="Top" Width="110" Click="Button_Click_2" Background="#FFF1F1F1" BorderBrush="Black" Foreground="Black" Height="34"/>
+        <TextBox Name="textbox_login" HorizontalAlignment="Left" Height="32" Margin="380,323,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" MaxLength="15"/>
+        <TextBlock HorizontalAlignment="Left" Margin="426,295,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="600,295,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox Name="combobox_role" HorizontalAlignment="Left" Margin="230,321,0,0" VerticalAlignment="Top" Width="120">
+            <System:String>Врач</System:String>
+            <System:String>Оператор</System:String>
+            <System:String>Администратор</System:String>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="255,295,0,0" TextWrapping="Wrap" Text="Роль" VerticalAlignment="Top" Foreground="White"/>
+        <PasswordBox Name="passwordbox_pas" HorizontalAlignment="Left" MaxLength="11" Margin="556,323,0,0" VerticalAlignment="Top" Width="154" Height="34"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="Stat_talon.Write_on_reception"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        mc:Ignorable="d"
+        Title="Запись на прием" Loaded="Window_Loaded" Height="760" Width="1032" WindowStartupLocation="CenterScreen" Closing="Window_Closing" ResizeMode="NoResize" FontSize="24" FontFamily="Times New Roman" Background="#FF00204F">
+    <Grid Name="grid1">
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="10,42,0,0" FontSize="45" TextWrapping="Wrap" Text="Врач" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="50,233,0,0" FontSize="36" TextWrapping="Wrap" Text="Село - Электронная запись" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="539,233,0,0" FontSize="36" TextWrapping="Wrap" Text="Город - Электронная запись" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="679,374,0,0" FontSize="36" TextWrapping="Wrap" Text="Повторные" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="10,128,0,0" FontSize="45" TextWrapping="Wrap" Text="Пациент" VerticalAlignment="Top"/>
+        <Button Content="Отменить" HorizontalAlignment="Left" Margin="539,652,0,0" VerticalAlignment="Top" Width="292" Height="58" Background="#FF00204F" Foreground="White" BorderBrush="White" Click="Button_Click_3"/>
+        <Button Content="Записать на приём" HorizontalAlignment="Left" Margin="192,652,0,0" VerticalAlignment="Top" Width="298" Height="58" Background="#FF00204F" Foreground="White" BorderBrush="White" Click="Button_Click_1"/>
+        <Button Name="button_doctor" Content="Выбор врача" BorderThickness="4" HorizontalAlignment="Left" Margin="359,42,0,0" VerticalAlignment="Top" Width="342" Height="52" Background="#B21A4570" Foreground="White" BorderBrush="#FF009CD6" Click="Button_Click"/>
+        <Button Content="Выбор пациента" HorizontalAlignment="Left" Margin="359,128,0,0" VerticalAlignment="Top" Width="342" Height="52" Background="#B2FFFFFF" Foreground="Black" BorderBrush="Black" Click="Button_Click_2"/>
+        <TextBlock Name="textblock_doctor" HorizontalAlignment="Left" Foreground="White" Margin="192,42,0,0" FontSize="45" TextWrapping="Wrap" Text="Текущий врач" VerticalAlignment="Top" Width="676"/>
+    </Grid>
+</Window>

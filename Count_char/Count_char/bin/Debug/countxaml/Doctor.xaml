@@ -1,0 +1,25 @@
+﻿<Window x:Class="Stat_talon.Doctor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stat_talon"
+        mc:Ignorable="d"
+        Title="Главная" Height="836.5" Width="1020" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="24" FontFamily="Times New Roman" Background="#FF011A3E" Closing="Window_Closing">
+    <Grid>
+        <Button Content="Открыть статистический талон" BorderBrush="White" BorderThickness="4" HorizontalAlignment="Left" Foreground="White"  Margin="508,729,0,0" VerticalAlignment="Top" Width="356" Height="68" Click="Button_Click" Background="{x:Null}"/>
+        <Button Content="Запись на прием" HorizontalAlignment="Left" BorderBrush="White" BorderThickness="4" Foreground="White" Margin="232,729,0,0" VerticalAlignment="Top" Width="242" Height="68" Click="Button_Click_1" Background="{x:Null}"/>
+        <WindowsFormsHost Name="forms1" HorizontalAlignment="Left" Height="341" Margin="10,45,0,0" VerticalAlignment="Top" Width="994"/>
+        <Menu HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="1014" Background="{x:Null}">
+            <MenuItem Header="Печать" Foreground="White" FontSize="23">
+                <MenuItem Header="Запись на прием на день" Background="#FF011A3E" Click="MenuItem_Click"></MenuItem>
+                <MenuItem Header="Запись на прием на неделю" Background="#FF011A3E" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem Header="Запись на прием на месяц" Background="#FF011A3E" Click="MenuItem_Click_2"></MenuItem>
+                <MenuItem Header="Статистический талон" Background="#FF011A3E" Click="MenuItem_Click_3"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <WindowsFormsHost x:Name="forms1_Copy" HorizontalAlignment="Left" Height="283" Margin="10,421,0,0" VerticalAlignment="Top" Width="994"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,393,0,0" TextWrapping="Wrap" Text="Статистические талоны ожидающие закрытия" VerticalAlignment="Top" Foreground="White"/>
+
+    </Grid>
+</Window>

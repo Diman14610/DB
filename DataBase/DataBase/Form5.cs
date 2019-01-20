@@ -33,6 +33,7 @@ namespace DataBase
         void DownloadFile()
         {
             openFileDialog1.Filter = "DBS (*.dbs)|*.dbs";
+            openFileDialog1.InitialDirectory = Path.GetFullPath("Resource/Tables");
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             foreach (String file in openFileDialog1.FileNames)

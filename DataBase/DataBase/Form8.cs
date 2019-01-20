@@ -20,45 +20,87 @@ namespace DataBase
 
         private void Form8_Load(object sender, EventArgs e)
         {
+            //List<string> sourse = new List<string>();
+            //List<string> countFields = new List<string>();
+            //for (int l = 0; l < Form7.strCountFiles + 1; l++)//Добавляет в коллекцию данные с файлов по кол-ву файлов
+            //{
+            //    sourse.AddRange(File.ReadLines("Resource/Insert/" + l + ".txt"));
+            //}
+
+            //int i = 0;//Счетчик для последовального добавления с коллекции sourse
+            //for (; i < Form7.strGenerationCount; i++)
+            //{
+            //    textBox1.Text += "INSERT INTO " + Form7.strName + " VALUES (" + sourse[i] + "," + Environment.NewLine;
+            //}
+            ///* listdata - Буфер обмена
+            //    т.е. 
+            //        str1 = INSERT INTO <Таблица> VALUES (<Пример 1>,<Пример 2>)
+            //             str1 = srt1 + <Пример 3>
+            // */
+            //List<string> listdata = new List<string>(); 
+
+
+            //listdata.AddRange(textBox1.Lines);
+            //textBox1.Clear();
+            //for (int m = 0; m < Form7.strCountFiles; m++)
+            //{
+            //    for (int j = 0; j < Form7.strGenerationCount; j++)
+            //    {
+            //        textBox1.Text += listdata[j] + sourse[i] + "," + Environment.NewLine;
+            //        i++;
+            //    }
+            //    listdata.Clear();
+            //    listdata.AddRange(textBox1.Lines);
+            //    textBox1.Clear();
+            //}
+            //try
+            //{
+            //    listdata.ToList().ForEach(r => textBox1.Text += r.Remove(r.Count() - 1, 1) + ")" + Environment.NewLine);
+            //}
+            //catch { }
+
+            //---------------------------------------------------------------------------------------------------------
+
+            string namefile = "FINISH";
+            File.Delete("Resource/Insert/" + namefile + ".txt");
             List<string> sourse = new List<string>();
             List<string> countFields = new List<string>();
             for (int l = 0; l < Form7.strCountFiles + 1; l++)//Добавляет в коллекцию данные с файлов по кол-ву файлов
             {
-                sourse.AddRange(File.ReadLines("Insert/" + l + ".txt"));
+                sourse.AddRange(File.ReadLines("Resource/Insert/" + l + ".txt"));
             }
-
+           
             int i = 0;//Счетчик для последовального добавления с коллекции sourse
             for (; i < Form7.strGenerationCount; i++)
             {
-                textBox1.Text += "INSERT INTO " + Form7.strName + " VALUES (" + sourse[i] + "," + Environment.NewLine;
+                File.AppendAllText("Resource/Insert/" + namefile + ".txt", "INSERT INTO " + Form7.strName + " VALUES (" + sourse[i] + "," + Environment.NewLine);
             }
             /* listdata - Буфер обмена
                 т.е. 
                     str1 = INSERT INTO <Таблица> VALUES (<Пример 1>,<Пример 2>)
-                         str2 = srt1 + <Пример 3>
+                         str1 = srt1 + <Пример 3>
              */
-            List<string> listdata = new List<string>(); 
+            List<string> listdata = new List<string>();
 
 
-            listdata.AddRange(textBox1.Lines);
-            textBox1.Clear();
+            listdata.AddRange(File.ReadAllLines("Resource/Insert/" + namefile + ".txt"));
+            File.Delete("Resource/Insert/" + namefile + ".txt");
             for (int m = 0; m < Form7.strCountFiles; m++)
             {
                 for (int j = 0; j < Form7.strGenerationCount; j++)
                 {
-                    textBox1.Text += listdata[j] + sourse[i] + "," + Environment.NewLine;
+                    File.AppendAllText("Resource/Insert/" + namefile + ".txt", listdata[j] + sourse[i] + "," + Environment.NewLine);
+                    //textBox1.Text += listdata[j] + sourse[i] + "," + Environment.NewLine;
                     i++;
                 }
                 listdata.Clear();
-                listdata.AddRange(textBox1.Lines);
-                textBox1.Clear();
+                listdata.AddRange(File.ReadAllLines("Resource/Insert/" + namefile + ".txt"));
+                File.Delete("Resource/Insert/" + namefile + ".txt");
             }
-            try
-            {
-                listdata.ToList().ForEach(r => textBox1.Text += r.Remove(r.Count() - 1, 1) + ")" + Environment.NewLine);
-            }
-            catch { }
-       
+              listdata.ToList().ForEach(r => File.AppendAllText("Resource/Insert/" + namefile + ".txt", r.Remove(r.Count()-1, 1) + ")" + Environment.NewLine));
+          
+
+            textBox1.Text += File.ReadAllText("Resource/Insert/" + namefile + ".txt");
 
         }
     }

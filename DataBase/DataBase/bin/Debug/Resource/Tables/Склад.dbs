@@ -1,0 +1,5 @@
+CREATE TABLE Склад (
+id_склада INT PRIMARY KEY IDENTITY(1,1),
+наименование NVARCHAR(150) NULL,
+телефон_склада NVARCHAR(11) NULL
+)

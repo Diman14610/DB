@@ -20,21 +20,21 @@ namespace DataBase
             InitializeComponent();
         }
 
-
         private void Form7_Load(object sender, EventArgs e)
         {
-            try/*Блок, который загружется все имена таблиц в текстовое поле*/
+            try//Блок, который загружется все имена таблиц в текстовое поле
             {
                 var col = new AutoCompleteStringCollection();
-                string[] s = Directory.GetFiles("Tables/", "*.dbs");
+                string[] s = Directory.GetFiles("Resource/Tables/", "*.dbs");
 
-                s.ToList().ForEach(r => col.Add(r.Replace(".dbs", "").Replace("Tables/", "")));
+                s.ToList().ForEach(r => col.Add(r.Replace(".dbs", "").Replace("Resource/Tables/", "")));
                 textBox1.AutoCompleteCustomSource = col;
             }
             catch { }
-            sourse.AddRange(File.ReadAllLines("Data/name.txt", Encoding.UTF8));//Имя
-            sourseM.AddRange(File.ReadAllLines("Data/middle.txt", Encoding.UTF8));//Фамилия
-            sourseL.AddRange(File.ReadAllLines("Data/last.txt", Encoding.UTF8));//Отчество
+            sourseNB.AddRange(File.ReadAllLines("Resource/Data/nameB.txt", Encoding.UTF8));//Имена М
+            sourseNG.AddRange(File.ReadAllLines("Resource/Data/nameG.txt", Encoding.UTF8));//Имена Ж
+            sourseM.AddRange(File.ReadAllLines("Resource/Data/middle.txt", Encoding.UTF8));//Фамилия
+            sourseL.AddRange(File.ReadAllLines("Resource/Data/last.txt", Encoding.UTF8));//Отчество
         }
 
         public List<ComboBox> listcomboBox = new List<ComboBox>();
@@ -44,21 +44,14 @@ namespace DataBase
         {
             var collection = new AutoCompleteStringCollection
             {
-                "nvarchar()", "bigint", "money","float",
-                "real","datetime","image","bit","time","date"
+                "nvarchar()","int", "bigint", "money","smallmoney","decimal",
+                "numeric","datetime","time","date"
             };
             string[] collectionstr =
             {
-                "NVARCHAR()", "BIGINT", "MONEY","FLOAT",
-                "REAL","DATETIME","IMAGE","BIT","TIME","DATE"
-            };
-            string[] collectioncategory =
-            {
-                "Телефон","Имя","Фамилия","Отчество",
-                "Возраст","Дата и время","Дата","Время",
-                "Деньги","Штрих код (EAN 13)","Серия и номер паспорта",
-                "Серия паспорта","Номер паспорта"
-            };
+                "NVARCHAR()","INT" ,"BIGINT", "MONEY","SMALLMONEY","DECIMAL",
+                "NUMERIC","DATETIME","TIME","DATE"
+            };//decimal/numeric нужны для точного хранения денег!
             panel1.Controls.Clear();
             listcomboBox.Clear();
             listcomboBox2.Clear();
@@ -69,6 +62,7 @@ namespace DataBase
             int count = Convert.ToInt16(textBox2.Text) + 1;
             int y = 9;
             int yy = 6;//19
+            int nameCountLb = 0;
             for (int i = 1; i < count; i++)
             {
                 listlabels.Add(new Label
@@ -102,20 +96,21 @@ namespace DataBase
                     Size = new Size(177, 28),
                     ForeColor = Color.Black,
                     Location = new Point(65, y),
+                    Name = nameCountLb.ToString(),
                     AutoCompleteCustomSource = collection,
 
                 });
                 listcomboBox2.Add(new ComboBox
                 {
-                    AutoCompleteMode = AutoCompleteMode.SuggestAppend,
-                    AutoCompleteSource = AutoCompleteSource.CustomSource,
                     Size = new Size(198, 28),
                     ForeColor = Color.Black,
+                    Name = nameCountLb.ToString(),
                     Location = new Point(360, y)
 
                 });
                 y += 34;
                 yy += 34;
+                nameCountLb++;
             }
 
             foreach (Label lb in listlabels)
@@ -137,35 +132,106 @@ namespace DataBase
             }
             foreach (ComboBox lb in listcomboBox2)
             {
-                lb.Items.AddRange(collectioncategory);
                 panel1.Controls.Add(lb);
             }
+            foreach (ComboBox lb in listcomboBox)
+            {
+                lb.SelectedIndexChanged += EventResultText;
+            }
+        }
+
+        //∨∨ Метод переназначает категорию данных с учетом типа данных ∨∨
+        void OverideComboBox2(object s, int name)
+        {
+
+            if (s.ToString() == "NVARCHAR()")
+            {
+                string[] collectioncategory =
+                {
+                    "Фамилия","Имя","Отчество","Телефон",
+                    "Возраст","Возраст {}-{}","Серия и номер паспорта",
+                    "Серия паспорта","Номер паспорта",
+                };
+                listcomboBox2[name].Text = "";
+                listcomboBox2[name].Items.Clear();
+                listcomboBox2[name].Items.AddRange(collectioncategory);
+            }
+            else if (s.ToString() == "INT")
+            {
+                string[] collectioncategory =
+                {
+                    "Счетчик"
+                };
+                listcomboBox2[name].Text = "";
+                listcomboBox2[name].Items.Clear();
+                listcomboBox2[name].Items.AddRange(collectioncategory);
+            }
+            else if (s.ToString() == "BIGINT")
+            {
+                string[] collectioncategory =
+                {
+                    "Штрих код (EAN XIII)"
+                };
+                listcomboBox2[name].Text = "";
+                listcomboBox2[name].Items.Clear();
+                listcomboBox2[name].Items.AddRange(collectioncategory);
+            }
+            else if (s.ToString() == "MONEY" | s.ToString() == "SMALLMONEY")
+            {
+                string[] collectioncategory =
+                {
+                    "Деньги","Деньги {}-{}"
+                };
+                listcomboBox2[name].Text = "";
+                listcomboBox2[name].Items.Clear();
+                listcomboBox2[name].Items.AddRange(collectioncategory);
+            }
+            else if (s.ToString() == "TIME")
+            {
+                string[] collectioncategory =
+                {
+                    "Время"
+                };
+                listcomboBox2[name].Text = "";
+                listcomboBox2[name].Items.Clear();
+                listcomboBox2[name].Items.AddRange(collectioncategory);
+            }
+
+        }
+        //∧∧ Метод переназначает категорию данных с учетом типа данных ∧∧
+
+        void EventResultText(object s, EventArgs e)
+        {
+            ComboBox cb = (s as ComboBox);
+            OverideComboBox2(cb.SelectedItem, Convert.ToInt16(cb.Name));
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(textBox2.Text) > 100)
-                textBox2.Text = "100";
+            try
+            {
+                if (Convert.ToInt16(textBox2.Text) > 100)
+                    textBox2.Text = "100";
+            }
+            catch { }
         }
 
+        //∨∨ Метод определяющий алгоритм генерации данных ∨∨
         void Algorithm(string str1, string str2, string namefile)
         {
-            // string[] collectionstr =
-            //{
-            //     "INT", "NVARCHAR()", "BIGINT", "MONEY","FLOAT",
-            //     "REAL","DATETIME","IMAGE","BIT","TIME","DATE"
-            // };
-            // string[] collectioncategory =
-            //{
-            //     "Телефон","Имя","Фамилия","Отчество",
-            //     "Возраст","Дата и время","Дата","Время",
-            //     "Деньги","Штрих код (EAN 13)","Серия и номер паспорта"
-            // };
-            File.Delete("Insert/" + namefile + ".txt"); //Удаляет файлы для записи в них
-            if (str1 == "BIGINT" & str2 == "Штрих код (EAN 13)")
+            File.Delete("Resource/Insert/" + namefile + ".txt"); //Удаляет файлы для записи в них
+
+            string strIntValues = str2.Replace("Возраст ","").Replace("Деньги ","").Replace("{","").Replace("}","").Replace("-"," ");
+            str2 = System.Text.RegularExpressions.Regex.Replace(str2, @"\d", "");
+
+            if (str1 == "BIGINT" & str2 == "Штрих код (EAN XIII)")
             {
                 for (int i = 0; i < strGenerationCount; i++)
                     AlgorithmBigInt(namefile);
+            }
+            else if (str1 == "INT" & str2 == "Счетчик")
+            {
+                AlgorithmIntCount(namefile, strGenerationCount);
             }
             else if (str1 == "NVARCHAR()" & str2 == "Телефон")
             {
@@ -187,80 +253,196 @@ namespace DataBase
                 for (int i = 0; i < strGenerationCount; i++)
                     AlgorithmNvarLast(namefile);
             }
-            //else if (str1 == "NVARCHAR()" & str2 == "Возраст")
-            //{
-            //    int age = Convert.ToInt16(str1.Replace("NVARCHAR(", "").Replace(")", ""));
-            //    MessageBox.Show(age + "");
-            //    if (age.ToString() == "")
-            //    {
-            //        for (int i = 0; i < strGenerationCount; i++)
-            //            AlgorithmNvarAge(namefile);
-            //    }
-            //    else
-            //    {
-            //        for (int i = 0; i < strGenerationCount; i++)
-            //            AlgorithmNvarAgeWith(namefile, age);
-            //    }
-            //}
+            else if (str1 == "NVARCHAR()" & str2 == "Возраст")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmNvarAge(namefile);
+            }
+            else if (str1 == "NVARCHAR()" & str2 == "Возраст {}-{}")
+            {
+                string[] das = strIntValues.Split(' ');
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmNvarAgeWithNum(namefile, Convert.ToInt16(das[0]), Convert.ToInt16(das[1]));
+            }
+            else if (str1 == "NVARCHAR()" & str2 == "Номер паспорта")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmNvarNumberPas(namefile);
+            }
+            else if (str1 == "NVARCHAR()" & str2 == "Серия паспорта")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmNvarSerPas(namefile);
+            }
+            else if (str1 == "NVARCHAR()" & str2 == "Серия и номер паспорта")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmNvarSerNumPas(namefile);
+            }
+            else if ((str1 == "MONEY" | str1 == "SMALLMONEY") & str2 == "Деньги")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmMoney(namefile);
+            }
+            else if ((str1 == "MONEY" | str1 == "SMALLMONEY") & str2 == "Деньги {}-{}")
+            {
+                string[] das = strIntValues.Split(' ');
+                try
+                {
+                    for (int i = 0; i < strGenerationCount; i++)
+                        AlgorithmMoneyWithNum(namefile, Convert.ToInt32(das[0]), Convert.ToInt32(das[1]));
+                }
+                catch
+                {
+                    MessageBox.Show(das[0]+"-"+das[1]+ " Числовой диапозон слишком велик или маленький для категории (Деньги {}-{})"+
+                        "  --> Попробуйте категорию (Деньги) <--", "Ошибка категории Деньги {}-{} !",
+                        MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+            }
+            else if (str1 == "TIME" & str2 == "Время")
+            {
+                for (int i = 0; i < strGenerationCount; i++)
+                    AlgorithmTime(namefile);
+            }
             else
             {
                 MessageBox.Show("Алгоритма с комбинацией полей: " + "(" + str1 + ")" + " " + "(" + str2 + ")" + " нету!");
             }
         }
+        //∧∧ Метод определяющий алгоритм генерации данных ∧∧
+
+        //∨∨ Методы генерирующие данные ∨∨
+        #region Algorithm<Тип данных>(Перменные)
 
         Random random = new Random();
+        public static List<string> sourseNB = new List<string>();//Коллекция имен М
+        public static List<string> sourseNG = new List<string>();//Коллекция имен Ж
+        public static List<string> sourseM = new List<string>();//Коллекция фамилий
+        public static List<string> sourseL = new List<string>();//Коллекция отчеств
 
-        /*********************************************************************************************************************/
-
-        void AlgorithmBigInt(string namefile)
+        void AlgorithmBigInt(string namefile)//Штрих код
         {
             string barcode = "";
             for (int i = 0; i < 13; i++)
             {
                 barcode += random.Next(0, 9);
             }
-            File.AppendAllText("Insert/" + namefile + ".txt", barcode + Environment.NewLine);
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", barcode + Environment.NewLine);
         }
 
-        void AlgorithmBigIntNvarchar(string namefile)
+        void AlgorithmIntCount(string namefile, int count)//Счетчик
+        {
+            for (int i = 1; i < count + 1; i++)
+            {
+                File.AppendAllText("Resource/Insert/" + namefile + ".txt", i + Environment.NewLine);
+            }
+
+        }
+
+        void AlgorithmBigIntNvarchar(string namefile)//Телефон
         {
             string phone = "";
             for (int i = 0; i < 10; i++)
             {
                 phone += random.Next(0, 9);
             }
-            File.AppendAllText("Insert/" + namefile + ".txt", phone = "\'" + phone.Insert(0, "8") + "\'" + Environment.NewLine);
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", phone = "\'" + phone.Insert(0, "7") + "\'" + Environment.NewLine);
         }
 
-        public static List<string> sourse = new List<string>();//Коллекция имен
-        public static List<string> sourseM = new List<string>();//Коллекция фамилий
-        public static List<string> sourseL = new List<string>();//Коллекция отчеств
-
-        void AlgorithmNvarName(string namefile)
+        void AlgorithmNvarMiddle(string namefile)//Фамилия
         {
-            File.AppendAllText("Insert/" + namefile + ".txt", "\'" + sourse[random.Next(0, 1987)] + "\'" + Environment.NewLine);
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + sourseM[random.Next(0, 251334)] + "\'" + Environment.NewLine);
         }
 
-        void AlgorithmNvarMiddle(string namefile)
+        void AlgorithmNvarName(string namefile)//Имя
         {
-            File.AppendAllText("Insert/" + namefile + ".txt", "\'" + sourseM[random.Next(0, 251334)] + "\'" + Environment.NewLine);
+            int b = random.Next(0, 2);
+            if (b == 0)
+                File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + sourseNB[random.Next(0, 885)] + "\'" + Environment.NewLine);
+            else
+                File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + sourseNG[random.Next(0, 700)] + "\'" + Environment.NewLine);
         }
 
-        void AlgorithmNvarLast(string namefile)
+        void AlgorithmNvarLast(string namefile)//Отчество
         {
-            File.AppendAllText("Insert/" + namefile + ".txt", "\'" + sourseL[random.Next(0, 77)] + "\'" + Environment.NewLine);
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + sourseL[random.Next(0, 77)] + "\'" + Environment.NewLine);
         }
 
-        //void AlgorithmNvarAgeWith(string namefile, int age)
-        //{
-        //    File.AppendAllText("Insert/" + namefile + ".txt", "\'" + random.Next(1, age) + "\'" + Environment.NewLine);
-        //}
+        void AlgorithmNvarAge(string namefile)//Возраст
+        {
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + random.Next(1, 100) + "\'" + Environment.NewLine);
+        }
 
-        //void AlgorithmNvarAge(string namefile)
-        //{
-        //    File.AppendAllText("Insert/" + namefile + ".txt", "\'" + random.Next(1, 100) + "\'" + Environment.NewLine);
-        //}
-        /*********************************************************************************************************************/
+        void AlgorithmNvarAgeWithNum(string namefile,int one,int two)//Возраст {}-{}
+        {
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + random.Next(one, two + 1) + "\'" + Environment.NewLine);
+        }
+
+        void AlgorithmNvarSerPas(string namefile)//Серия паспорта
+        {
+            string ser = "";
+            for (int i = 0; i < 4; i++)
+            {
+                ser += random.Next(0, 9);
+            }
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + ser + "\'" + Environment.NewLine);
+        }
+
+        void AlgorithmNvarNumberPas(string namefile)//Номер паспорта
+        {
+            string num = "";
+            for (int i = 0; i < 6; i++)
+            {
+                num += random.Next(0, 9);
+            }
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + num + "\'" + Environment.NewLine);
+        }
+
+        void AlgorithmNvarSerNumPas(string namefile)//Серия и номер паспорта
+        {
+            string snp = "";
+            for (int i = 0; i < 10; i++)
+            {
+                snp += random.Next(0, 9);
+            }
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + snp + "\'" + Environment.NewLine);
+        }
+
+        void AlgorithmMoney(string namefile)//Деньги
+        {
+            string m = "";//922,337,203,685,477
+            int r = random.Next(1,16);
+            for (int i = 0; i < r; i++)
+            {
+                m += random.Next(0, 9);
+            }
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", m  + Environment.NewLine);
+        }
+
+        void AlgorithmMoneyWithNum(string namefile, int one, int two)//Деньги {}-{}
+        {
+            try
+            {
+                File.AppendAllText("Resource/Insert/" + namefile + ".txt", random.Next(one, two) + Environment.NewLine);
+            }
+            catch
+            { }//922,337,203,685,477
+        }
+
+        void AlgorithmTime(string namefile)//Время
+        {
+            int t1;//12:46:29
+            int t2;
+            int t3;
+            t1 = random.Next(0, 23);
+            t2 = random.Next(0, 60);
+            t3 = random.Next(0, 60);
+
+            File.AppendAllText("Resource/Insert/" + namefile + ".txt", "\'" + t1 + ":" + t2 + ":" + t3 + "\'" + Environment.NewLine);
+        }
+
+        #endregion
+        //∧∧ Методы генерирующие данные ∧∧
 
         public static int strGenerationCount;//Кол-во генерируемых полей
         public static string strName;//Имя таблицы
@@ -280,8 +462,7 @@ namespace DataBase
                 {
                     try
                     {
-                        Algorithm(listcomboBox[i].SelectedItem.ToString(), listcomboBox2[i].SelectedItem.ToString(), i.ToString());
-                        Thread.Sleep(15);
+                        Algorithm(listcomboBox[i].SelectedItem.ToString(), listcomboBox2[i].Text, i.ToString());
                     }
                     catch { }
                     strCountFiles = i;

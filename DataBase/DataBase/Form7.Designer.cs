@@ -56,13 +56,18 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(12, 71);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(192, 26);
             this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             // 
             // textBox1
             // 
@@ -72,6 +77,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(290, 26);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Пациент";
             // 
             // label2
             // 
@@ -135,6 +141,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(207, 26);
             this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "5";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // Form7

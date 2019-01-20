@@ -1,0 +1,4 @@
+CREATE TABLE Телефон (
+id_телефона INT PRIMARY KEY IDENTITY(1,1),
+номер INT PRIMARY KEY IDENTITY(1,1)
+)

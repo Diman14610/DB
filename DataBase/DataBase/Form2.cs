@@ -38,10 +38,10 @@ namespace DataBase
 
             try
             {
-                Directory.CreateDirectory("Tables");
+                Directory.CreateDirectory("Resource/Tables");
             }
             catch { }
-            File.CreateText("Tables/" + textBox1.Text + ".dbs").Dispose();
+            File.CreateText("Resource/Tables/" + textBox1.Text + ".dbs").Dispose();
             textBox4.Text += "CREATE TABLE " + path + " (";
             textBox5.Text += "CREATE TABLE " + path + " (";
         }
@@ -52,7 +52,7 @@ namespace DataBase
             textBox5.Text = textBox5.Text.Remove(textBox5.TextLength - 1);
             textBox4.Text += Environment.NewLine + ")"+Environment.NewLine;
             textBox5.Text += Environment.NewLine + ")" + Environment.NewLine;
-            File.WriteAllText("Tables/" + path +".dbs", textBox5.Text);
+            File.WriteAllText("Resource/Tables/" + path +".dbs", textBox5.Text);
             textBox1.Enabled = true;
             textBox1.Clear();
             button3.Enabled = true;
@@ -161,9 +161,9 @@ namespace DataBase
             textBox3.AutoCompleteCustomSource = collection;
             try
             {
-                str1 = File.ReadAllText("Filtres/One.txt");
-                str2 = File.ReadAllText("Filtres/Two.txt");
-                stra = File.ReadAllText("Filtres/A.txt");
+                str1 = File.ReadAllText("Resource/Filtres/One.txt");
+                str2 = File.ReadAllText("Resource/Filtres/Two.txt");
+                stra = File.ReadAllText("Resource/Filtres/A.txt");
             }
             catch { }
 
@@ -173,7 +173,7 @@ namespace DataBase
         {
             textBox5.Text = textBox5.Text.Remove(textBox5.TextLength - 1);
             textBox5.Text += Environment.NewLine + ")" + Environment.NewLine;
-            File.WriteAllText("Tables/" + path + ".dbs", textBox5.Text);
+            File.WriteAllText("Resource/Tables/" + path + ".dbs", textBox5.Text);
             textBox4.Text = textBox4.Text.Remove(textBox4.TextLength - 1);
             textBox4.Text += Environment.NewLine + ")" + Environment.NewLine;
             saveFileDialog1.Filter = "TXT File (*.txt)|*.txt";
@@ -202,9 +202,9 @@ namespace DataBase
             form4.ShowDialog();
             try
             {
-                str1 = File.ReadAllText("Filtres/One.txt");
-                str2 = File.ReadAllText("Filtres/Two.txt");
-                stra = File.ReadAllText("Filtres/A.txt");
+                str1 = File.ReadAllText("Resource/Filtres/One.txt");
+                str2 = File.ReadAllText("Resource/Filtres/Two.txt");
+                stra = File.ReadAllText("Resource/Filtres/A.txt");
             }
             catch { }
         }

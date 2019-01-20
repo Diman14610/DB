@@ -86,76 +86,76 @@ namespace DataBase
         {
             try
             {
-                Directory.CreateDirectory("Filtres");
+                Directory.CreateDirectory("Resource/Filtres");
             }
             catch { }
             // Создает One.txt и A.txt, в 1 записывает данные поля и записывает в 2 файл если checed == true
             if (!string.IsNullOrEmpty(textBox1.Text) | !string.IsNullOrWhiteSpace(textBox1.Text))
             {
 
-                File.CreateText("Filtres/One.txt").Dispose();
-                File.WriteAllText("Filtres/One.txt", textBox1.Text);
-                File.WriteAllText("Filtres/Two.txt", "");
+                File.CreateText("Resource/Filtres/One.txt").Dispose();
+                File.WriteAllText("Resource/Filtres/One.txt", textBox1.Text);
+                File.WriteAllText("Resource/Filtres/Two.txt", "");
 
-                File.CreateText("Filtres/A.txt").Dispose();
+                File.CreateText("Resource/Filtres/A.txt").Dispose();
                 if (checkBox1.Checked == true)
-                    File.WriteAllText("Filtres/A.txt", "а");
+                    File.WriteAllText("Resource/Filtres/A.txt", "а");
             }// Условия для radiobutton
             else
             {
                 if (radioButton1.Checked == true)
                 {
-                    File.CreateText("Filtres/Two.txt").Dispose();
-                    File.WriteAllText("Filtres/Two.txt", "ID");
-                    File.WriteAllText("Filtres/One.txt", "");
+                    File.CreateText("Resource/Filtres/Two.txt").Dispose();
+                    File.WriteAllText("Resource/Filtres/Two.txt", "ID");
+                    File.WriteAllText("Resource/Filtres/One.txt", "");
 
-                    File.CreateText("Filtres/A.txt").Dispose();
+                    File.CreateText("Resource/Filtres/A.txt").Dispose();
                     if (checkBox2.Checked == true)
-                        File.WriteAllText("Filtres/A.txt", "а");
+                        File.WriteAllText("Resource/Filtres/A.txt", "а");
                 }
                 else if (radioButton2.Checked == true)
                 {
-                    File.CreateText("Filtres/Two.txt").Dispose();
-                    File.WriteAllText("Filtres/Two.txt", "id");
-                    File.WriteAllText("Filtres/One.txt", "");
+                    File.CreateText("Resource/Filtres/Two.txt").Dispose();
+                    File.WriteAllText("Resource/Filtres/Two.txt", "id");
+                    File.WriteAllText("Resource/Filtres/One.txt", "");
 
-                    File.CreateText("Filtres/A.txt").Dispose();
+                    File.CreateText("Resource/Filtres/A.txt").Dispose();
                     if (checkBox2.Checked == true)
-                        File.WriteAllText("Filtres/A.txt", "а");
+                        File.WriteAllText("Resource/Filtres/A.txt", "а");
                 }
                 else if (radioButton3.Checked == true)
                 {
-                    File.CreateText("Filtres/Two.txt").Dispose();
-                    File.WriteAllText("Filtres/Two.txt", "Код");
-                    File.WriteAllText("Filtres/One.txt", "");
+                    File.CreateText("Resource/Filtres/Two.txt").Dispose();
+                    File.WriteAllText("Resource/Filtres/Two.txt", "Код");
+                    File.WriteAllText("Resource/Filtres/One.txt", "");
 
-                    File.CreateText("Filtres/A.txt").Dispose();
+                    File.CreateText("Resource/Filtres/A.txt").Dispose();
                     if (checkBox2.Checked == true)
-                        File.WriteAllText("Filtres/A.txt", "а");
+                        File.WriteAllText("Resource/Filtres/A.txt", "а");
                 }
                 else if (radioButton4.Checked == true)
                 {
-                    File.CreateText("Filtres/Two.txt").Dispose();
-                    File.WriteAllText("Filtres/Two.txt", "код");
-                    File.WriteAllText("Filtres/One.txt", "");
+                    File.CreateText("Resource/Filtres/Two.txt").Dispose();
+                    File.WriteAllText("Resource/Filtres/Two.txt", "код");
+                    File.WriteAllText("Resource/Filtres/One.txt", "");
 
-                    File.CreateText("Filtres/A.txt").Dispose();
+                    File.CreateText("Resource/Filtres/A.txt").Dispose();
                     if (checkBox2.Checked == true)
-                        File.WriteAllText("Filtres/A.txt", "а");
+                        File.WriteAllText("Resource/Filtres/A.txt", "а");
                 }
                 else if (radioButton5.Checked == true)
                 {
-                    File.CreateText("Filtres/Two.txt").Dispose();
-                    File.WriteAllText("Filtres/Two.txt", "№");
-                    File.WriteAllText("Filtres/One.txt", "");
+                    File.CreateText("Resource/Filtres/Two.txt").Dispose();
+                    File.WriteAllText("Resource/Filtres/Two.txt", "№");
+                    File.WriteAllText("Resource/Filtres/One.txt", "");
 
-                    File.CreateText("Filtres/A.txt").Dispose();
+                    File.CreateText("Resource/Filtres/A.txt").Dispose();
                     if (checkBox2.Checked == true)
-                        File.WriteAllText("Filtres/A.txt", "а");
+                        File.WriteAllText("Resource/Filtres/A.txt", "а");
                 }
             }// Если не стоит галочка в checkeds, то в A.txt записывает пустое поле
             if(checkBox1.Checked == false & checkBox2.Checked == false)
-                File.WriteAllText("Filtres/A.txt", "");
+                File.WriteAllText("Resource/Filtres/A.txt", "");
             this.Close();
         }
 
@@ -196,9 +196,9 @@ namespace DataBase
         {
             try
             {
-                str1 = File.ReadAllText("Filtres/One.txt");
-                str2 = File.ReadAllText("Filtres/Two.txt");
-                stra = File.ReadAllText("Filtres/A.txt");
+                str1 = File.ReadAllText("Resource/Filtres/One.txt");
+                str2 = File.ReadAllText("Resource/Filtres/Two.txt");
+                stra = File.ReadAllText("Resource/Filtres/A.txt");
             }
             catch { }
     

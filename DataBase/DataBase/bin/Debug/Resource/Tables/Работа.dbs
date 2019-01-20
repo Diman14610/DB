@@ -1,0 +1,5 @@
+CREATE TABLE Работа (
+id_работы INT PRIMARY KEY IDENTITY(1,1),
+наименование_работы NVARCHAR(150) NULL,
+телефон NVARCHAR(150) NULL
+)

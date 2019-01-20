@@ -33,7 +33,7 @@ namespace DataBase
             textBox6.Clear();
             openFileDialog1.Filter = "DBS (*.dbs)|*.dbs";
             openFileDialog1.FileName = "";
-            openFileDialog1.InitialDirectory = Path.GetFullPath("Tables");
+            openFileDialog1.InitialDirectory = Path.GetFullPath("Resource/Tables");
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -165,7 +165,7 @@ namespace DataBase
             textBox9.Clear();
             foreach (var file in lidist)
             {
-                textBox9.Text += File.ReadAllText("Tables/" + file + ".dbs");
+                textBox9.Text += File.ReadAllText("Resource/Tables/" + file + ".dbs");
             }
             textBox9.Text += str;
             saveFileDialog1.Filter = "TXT File (*.txt)|*.txt";
